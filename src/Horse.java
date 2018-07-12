@@ -69,7 +69,8 @@ public class Horse implements Comparable<Horse> {
     }
 
     public void setRandomRaceValue() {
-        raceValue = rating + (volatility * ((new Random()).nextInt(3) - 1));
+        // raceValue = rating + (volatility * ((new Random()).nextInt(3) - 1));
+        raceValue = rating + (volatility * ((3 * new Random().nextFloat()) - 1));
     }
 
     // You have to be first to win the Race I guess
@@ -85,6 +86,7 @@ public class Horse implements Comparable<Horse> {
     }
 
     public void updateRatings(int wellness) {
+        // TODO MAYBE NOT HERE, BUT INCLUDE THE CHANGE OF VOLATILITY
         // Depending on how well they did and their trainer skill, we determine how much their rating improves by
         // Depending on how well they did and their horse rating, their trainer rating also goes up (but less)
         float priorSkillCoefficient = (float)Math.sqrt((double)(trainer.getSkill() * rating));
