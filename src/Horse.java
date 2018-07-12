@@ -60,6 +60,10 @@ public class Horse implements Comparable<Horse> {
         return racesLost;
     }
 
+    public float getRaceValue() {
+        return raceValue;
+    }
+
     public void setRaceValue(float raceValue) {
         this.raceValue = raceValue;
     }

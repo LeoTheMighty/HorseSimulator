@@ -22,6 +22,8 @@ public class Simulation {
     private boolean ifInside = false;
     private BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
 
+    private boolean ifAdmin = false;
+
     private int numTimesVisitedMain = 0;
 
     // TODO Expand on this list
@@ -69,6 +71,9 @@ public class Simulation {
             System.out.println("You can do many different things while you're here, just go to help for questions!");
         }
         System.out.println();
+
+        // This is just for extra debugging messages about everything
+        ifAdmin = response.equals("admin");
 
         // Choose the random computer players
         // This chooses random `numComputerUsers` users to be in the computer users set

@@ -27,6 +27,14 @@ public class Bet {
         return horse;
     }
 
+    public float getValue() {
+        return value;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     // TODO Consider making this not static
     public static float horseBestReturn(Horse horse) {
         // The max return is a multiplication value

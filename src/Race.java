@@ -28,8 +28,11 @@ public class Race {
 
     private League league = League.PONY;
 
-    public Race(User currentUser, HashMap<String, Horse> horseHashMap, ArrayList<User> computerUsers) {
+    private boolean ifAdmin;
+
+    public Race(User currentUser, HashMap<String, Horse> horseHashMap, ArrayList<User> computerUsers, boolean ifAdmin) {
         // TODO INCLUDE SOMETHING ABOUT LEAGUES IN THE RACE
+        this.ifAdmin = ifAdmin;
         this.currentUser = currentUser;
         this.horseHashMap = horseHashMap;
         this.computerUsers = computerUsers;
@@ -67,7 +70,11 @@ public class Race {
             // TODO Calculate the expected value
             float percentageBet = ((new Random()).nextFloat() / 4);
             Horse randomHorse = racers.get((new Random()).nextInt(racers.size()));
-            bets.add(new Bet(computerUser, randomHorse, computerUser.getMoney() * percentageBet));
+            Bet bet = new Bet(computerUser, randomHorse, computerUser.getMoney() * percentageBet);
+            if (ifAdmin) {
+                System.out.println(bet.getUser().getName() + " bets " + bet.getValue() + " on " + randomHorse.getName() + " (rating: " + randomHorse.getRating() + ")");
+            }
+            bets.add(bet);
         }
     }
 
@@ -221,6 +228,10 @@ public class Race {
             // You can win up to Bet.horseBestWInning
             System.out.println(i + ". " + racer.getName() + ":");
             System.out.println("    Rating: " + racer.getRating());
+            if (ifAdmin) {
+                System.out.println("    Volatility: " + racer.getVolatility());
+                System.out.println("    Trainer skill: " + racer.getTrainer().getSkill());
+            }
             System.out.println("    Best Multiplier: " + Bet.horseBestReturn(racer) + "x ");
             i++;
         }
@@ -238,6 +249,15 @@ public class Race {
         }
         racers.sort(Horse::compareTo);
 
+        if (ifAdmin) {
+            int i = 1;
+            for (Horse racer : racers) {
+                System.out.println(i + ". " + racer.getName() + " w/ race value: " + racer.getRaceValue());
+                System.out.println("(Rating: " + racer.getRating() + ", Volatility: " + racer.getVolatility() + ")");
+                i++;
+            }
+        }
+
         // TODO Create silly dialogue of the race. Saying who wins in the end.
         announceTheRace();
 
@@ -247,13 +267,18 @@ public class Race {
         for (int i = 0; i < racers.size(); i++) {
             // inverse to position on list
             // Becomes negative after beating less than half of the other racers
+            Horse racer = racers.get(i);
+
+            float horseRating = racer.getRating();
+            float trainerRating = racer.getTrainer().getSkill();
+
             int wellness = (racers.size() - i - 1) - (racers.size() / 2);
             // You only win if you get first. Otherwise, you're a loser :)
             if (i == 0) {
-                racers.get(i).win(wellness);
+                racer.win(wellness);
             }
             else {
-                racers.get(i).lose(wellness);
+                racer.lose(wellness);
             }
         }
 
