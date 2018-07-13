@@ -45,6 +45,7 @@ public class Race {
 
     private void prepareNewRace() {
         // This chooses random `numRacersPerRace` horses to be in the race
+        racers.clear();
         int numHorses = horseHashMap.size();
         HashSet<Integer> horseNumberSet = new HashSet<>();
         for (int i = 0; i < numRacersPerRace; i++) {
@@ -325,7 +326,7 @@ public class Race {
         }
     }
 
-    private void shuffleArrayList(ArrayList<Horse> racerList) {
+    private void shuffleArrayList(final ArrayList<Horse> racerList) {
         // TODO How to shuffle an ArrayList in Java?
         // TODO THIS IS BRUTALLY INEFFICIENT
         ArrayList<Integer> randomIndexes = new ArrayList<>();
@@ -344,6 +345,56 @@ public class Race {
         for (int i = 0; i < length; i++) {
             racerList.set(i, returnArray.get(i));
         }
+    }
+
+    private String getRandomString(ArrayList<String> strings) {
+        return strings.get(random.nextInt(strings.size()));
+    }
+
+    private String getRandomHorseStatement(Horse horse, boolean ifLeague, boolean ifVol, boolean ifHistory, boolean ifRatingDiff, boolean ifRaceValue) {
+        // TODO Statements can be about rating vs League rating, volatility, history, trainer/horse rating diff, rating vs raceValue
+        ArrayList<String> potentialAnnouncements = new ArrayList<>();
+        String name = horse.getName();
+        float rating = horse.getRating();
+
+        if (ifLeague) {
+            float leagueMaxRating = horse.getLeague().maxRating();
+            // If rating >= leagueMaxRating, this is one of the best horses in the league
+            // elif rating > leagueMaxRating * 3 / 4, this is a favored underhorse, has a good chance of getting 2nd or 3rd
+            // elif rating > leagueMaxRating / 2, this is an average horse, he might be able to pull his weight and get above half
+            // elif rating > leagueMaxrating / 4, this is a lowly rated horse, with luck it can beat even the worst horses
+            // else, WOw! It would be a miracle if this horse can even get past last place!
+        }
+        if (ifVol) {
+            float volatility = horse.getVolatility();
+            // If volatility > 2.5(rating)
+            // elif volatility > rating
+            // elif volatility > 0.5(rating)
+            // elif volatility > 0.25(rating)
+            // elif volatility > 0.1(rating)
+            // elif volatility < 0.1(rating)
+            // else, an incredibly stable horse, it will never get an unexpected result
+
+        }
+        if (ifHistory) {
+            // If abs(ratio) < 0.1, very average
+            // If racesLost = 0, undefeated, insanely good horse, his reputation at stake
+            // if ratio > 10.0, one of the best horses in the league
+            // if ratio > 3.0,
+            int racesWon = horse.getRacesWon();
+            int racesLost = horse.getRacesLost();
+            float ratio = (racesWon / racesLost) - 1.0f;
+        }
+        if (ifRatingDiff) {
+            float trainerSkill = horse.getTrainer().getSkill();
+        }
+        if (ifRaceValue) {
+            float raceValue = horse.getRaceValue();
+        }
+
+        String announcement = getRandomString(potentialAnnouncements);
+        horse.addAnnouncement(announcement);
+        return announcement;
     }
 
     public void announceTheRace() {
@@ -366,106 +417,118 @@ public class Race {
         // How to measure good/bad days?
         // How good raceValue is?
 
-        ArrayList<Horse> randomOrderRacers = racers;
+        ArrayList<Horse> randomOrderRacers = new ArrayList<>();
+        randomOrderRacers.addAll(racers);
         shuffleArrayList(randomOrderRacers);
 
-        int numChoices = 2;
-        // For the introduction
-        switch (random.nextInt(numChoices)) {
-            case 0:
-                System.out.println("Welcome everyone to the horse race! We have a number of great horses competing today!");
-                System.out.println("The race is about to begin, so everyone get ready for this exciting competition!!!");
-                break;
-            case 1:
-                System.out.println("Nooooooowwwww people! it's time to get right into the action!");
-                System.out.println("I hope you brought your raincoats and umberellas, but talent is about to rain down on everyone!");
-                break;
-            default:
-                // Error here
-                break;
-        }
+        // 0, introduction
+        // 1, horse stats
+        // 2, beginning of the race
+        // 3, mid places
+        // 4, full speed
+        // 5, the turn
+        // 6, random historical commentary
+        // 7, the twist near the end!
+        // 8, the twist at the very end
+        // 9, finishing positions
+        ArrayList<ArrayList<String>> raceAnnouncementChoices = new ArrayList<>();
 
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-        numChoices = 1;
+        // Straight random at 0
+        // Horse statements at 1, 2, 3, 4, 5, 6
+        // Surprise and places at 7, 8, 9
+        for (int i = 0; i < 10; i++) {
+            ArrayList<String> raceAnnouncementChoice = new ArrayList<>();
+            boolean ifLeague = false;
+            boolean ifVol = false;
+            boolean ifHistory = false;
+            boolean ifRatingDiff = false;
+            boolean ifRaceValue = false;
+            switch (i) {
+                case 0:
+                    // 0, introduction
+                    raceAnnouncementChoice.add("Welcome everyone to the horse race! We have a number of great horses competing today!\n " +
+                            "The race is about to begin, so everyone get ready for this exciting competition!!!");
+                    raceAnnouncementChoice.add("Nooooooowwwww people! it's time to get right into the action!\n " +
+                            "I hope you brought your raincoats and umbrellas, but talent is about to rain down on everyone!");
+                    raceAnnouncementChoice.add("Everyone everyone take your places, the race is a-a-a-bout to begin!\n" +
+                            "Please be calm while we watch this lovely race.");
+                    break;
+                case 1:
+                    // 1, horse stats
+                    // TODO Add lane numbers? (i.e in lane number one we have rider...)
+                    ArrayList<String> startingStatements = new ArrayList<>();
+                    startingStatements.add("The horses look poised and ready to go!");
+                    startingStatements.add("It looks like every trainer is on their horse and we are ready to begin.");
 
-        // The specific horse stats
-        switch (random.nextInt(numChoices)) {
-            case 0:
-                System.out.println("Each horse looks poised and ready to sprint!");
-                // TODO Add lane numbers? (i.e in lane number one we have rider...)
-                for (Horse horse : randomOrderRacers) {
-                   System.out.println(horse.getName() + " looks good!");
+                    // Include ratings / volatility / difference between trainer and horse
+                    ifVol = true;
+                    ifRatingDiff = true;
+                    break;
+                case 2:
+                    // TODO beginning of the race
+                    // ArrayList<String> start
+
+                    // Include "expected" results based on ratings
+                    ifLeague = true;
+                    break;
+                case 3:
+                    // TODO mid places
+                    // TODO Speak more about what the horses and trainers have at stake (their x1.0 value)
+
+                    break;
+                case 4:
+                    // TODO full speed
+                    // Include volatility in how crazy each horse looks
+                    ifVol = true;
+                    break;
+                case 5:
+                    // TODO the turn
+                    // Include difference between raceValue and rating to say if good day or bad day
+                    ifRaceValue = true;
+                    break;
+                case 6:
+                    // TODO random historical commentary
+                    // Include racesWon/racesLost
+                    ifHistory = true;
+                    break;
+                case 7:
+                    // TODO the twist near the end
+                    // TODO Only incorporate ratings in how surprised the announcer is
+                    break;
+                case 8:
+                    // TODO the twist at the very end
+                    // TODO Only incorporate ratings in how surprised the announcer is
+                    break;
+                case 9:
+                    // TODO the finishing positions
+                    // TODO Only incorporate ratings in how surprised the announcer is
+                    break;
+                default:
+                    // ERROR?
+                    break;
+            }
+
+            if (i > 0 && i < 7) {
+                // You want random horse statements
+                // Add it onto the pre-statements
+                for (int a_i = 0; a_i < raceAnnouncementChoice.size(); a_i++) {
+                    String statement = raceAnnouncementChoice.get(a_i) + "\n";
+                    for (Horse racer : randomOrderRacers) {
+                        // TODO Try StringBuilder?
+                        statement += getRandomHorseStatement(racer, ifLeague, ifVol, ifHistory, ifRatingDiff, ifRaceValue);
+                        statement += "\n";
+                    }
+                    raceAnnouncementChoice.set(a_i, statement);
                 }
-                break;
-            default:
-                break;
+            }
+
+            raceAnnouncementChoices.add(raceAnnouncementChoice);
+            shuffleArrayList(randomOrderRacers);
         }
 
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the beginning of the race
-        switch (random.nextInt(numChoices)) {
-
+        for (ArrayList<String> announcementChoice : raceAnnouncementChoices) {
+            System.out.println(getRandomString(announcementChoice));
+            enterToContinue();
         }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the initial places
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the full speed
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the turn
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the random historical commentary
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the twist near the end!
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // For the twist at the very end
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
-        shuffleArrayList(randomOrderRacers);
-
-        // The finishing positions
-        switch (random.nextInt(numChoices)) {
-
-        }
-
-        enterToContinue();
     }
 }

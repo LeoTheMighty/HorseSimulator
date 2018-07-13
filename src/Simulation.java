@@ -159,7 +159,7 @@ public class Simulation {
                 // TODO implement these
                 case 1:
                     // Race
-                    Race race = new Race(currentUser, allHorses, computerUsers);
+                    Race race = new Race(currentUser, allHorses, computerUsers, ifAdmin);
                     race.enter();
                     break;
                 case 2:

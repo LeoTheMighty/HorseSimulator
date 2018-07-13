@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Horse implements Comparable<Horse> {
@@ -13,6 +14,8 @@ public class Horse implements Comparable<Horse> {
 
     private float raceValue = 0.0f;
 
+    private ArrayList<String> announcementCache;
+
     public Horse(String name, int age, float rating, float volatility, League league, int racesWon, int racesLost) {
         this.name = name;
         this.age = age;
@@ -21,11 +24,24 @@ public class Horse implements Comparable<Horse> {
         this.league = league;
         this.racesWon = racesWon;
         this.racesLost = racesLost;
+
+        announcementCache = new ArrayList<>();
     }
 
     @Override
     public int compareTo(Horse horse) {
-        return Float.compare(this.raceValue, horse.raceValue);
+        // return Float.compare(horse.raceValue, raceValue);
+        float rv = horse.raceValue;
+        float srv = raceValue;
+        if (srv == rv) {
+            return 0;
+        }
+        else if (srv > rv) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
     }
 
     public void setTrainer(Trainer trainer) {
@@ -78,11 +94,17 @@ public class Horse implements Comparable<Horse> {
     public void win(int wellness) {
         racesWon++;
         updateRatings(2 * wellness);
+        announcementCache.clear();
     }
 
     public void lose(int wellness) {
         racesLost++;
         updateRatings(wellness);
+        announcementCache.clear();
+    }
+
+    public void addAnnouncement(String announcement) {
+        announcementCache.add(announcement);
     }
 
     public void updateRatings(int wellness) {

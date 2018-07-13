@@ -19,6 +19,8 @@ public class Bet {
     public void cashBet(int place, int numRacers) {
         // The value is proportional to the place
         // If place == 0, then give bestReturn, else give proportional so that last is zero
+        // If place is half then give money back
+        // TODO Everyone betting is losing money
         float cashReturn = bestReturn * ((numRacers - (place + 1)) / (numRacers - 1));
         user.giveMoney(cashReturn);
     }
