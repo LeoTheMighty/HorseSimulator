@@ -348,6 +348,9 @@ public class Race {
     }
 
     private String getRandomString(ArrayList<String> strings) {
+        if (strings.size() <= 0) {
+            return "";
+        }
         return strings.get(random.nextInt(strings.size()));
     }
 
@@ -358,38 +361,192 @@ public class Race {
         float rating = horse.getRating();
 
         if (ifLeague) {
+            ArrayList<String> potLeagueStatements = new ArrayList<>();
             float leagueMaxRating = horse.getLeague().maxRating();
-            // If rating >= leagueMaxRating, this is one of the best horses in the league
-            // elif rating > leagueMaxRating * 3 / 4, this is a favored underhorse, has a good chance of getting 2nd or 3rd
-            // elif rating > leagueMaxRating / 2, this is an average horse, he might be able to pull his weight and get above half
-            // elif rating > leagueMaxrating / 4, this is a lowly rated horse, with luck it can beat even the worst horses
-            // else, WOw! It would be a miracle if this horse can even get past last place!
+            // TODO Add the LEAGUE COMPARISON statements
+            if (rating >= leagueMaxRating) {
+                // If rating >= leagueMaxRating, this is one of the best horses in the league
+                potLeagueStatements.add(name + " is one of the best horses in the league.");
+                // potLeagueStatements.add(name + "")
+            }
+            else if (rating > leagueMaxRating * 3 / 4) {
+                // elif rating > leagueMaxRating * 3 / 4, this is a favored underhorse, has a good chance of getting 2nd or 3rd
+                potLeagueStatements.add(name + " is a favored horse to win. Hopefully they can do their best!");
+            }
+            else if (rating > leagueMaxRating / 2) {
+                // elif rating > leagueMaxRating / 2, this is an average horse, he might be able to pull his weight and get above half
+                potLeagueStatements.add(name + " is an average horse in this league. Hopefully they can bring their game up and get above 3rd!");
+            }
+            else if (rating > leagueMaxRating / 4) {
+                // elif rating > leagueMaxrating / 4, this is a lowly rated horse, with luck it can beat even the worst horses
+                potLeagueStatements.add(name + " is not very favored to win. Hopefully can they can pull their weight and place!");
+            }
+            else {
+                // else, WOw! It would be a miracle if this horse can even get past last place!
+                potLeagueStatements.add("Wow! What is " + name + " doing there! It'll be a miracle if they get better than last!");
+            }
+            String announcement = getRandomString(potLeagueStatements);
+            if (ifAdmin) {
+                potentialAnnouncements.add(announcement + " (" + rating + " / " + leagueMaxRating + ")");
+            }
+            else {
+                potentialAnnouncements.add(announcement);
+            }
         }
         if (ifVol) {
+            ArrayList<String> potVolStatments = new ArrayList<>();
             float volatility = horse.getVolatility();
-            // If volatility > 2.5(rating)
-            // elif volatility > rating
-            // elif volatility > 0.5(rating)
-            // elif volatility > 0.25(rating)
-            // elif volatility > 0.1(rating)
-            // elif volatility < 0.1(rating)
-            // else, an incredibly stable horse, it will never get an unexpected result
+            // TODO ADD THE VOLATILITY COMPARISON STATEMETNS
+            if (volatility > 2.5 * rating) {
+                // If volatility > 2.5(rating)
+            }
+            else if (volatility > rating) {
+                // elif volatility > rating
+            }
+            else if (volatility > 0.5 * rating) {
+                // elif volatility > 0.5(rating)
+            }
+            else if (volatility > 0.25 * rating) {
+                // elif volatility > 0.25(rating)
+            }
+            else if (volatility > 0.1 * rating) {
+                // elif volatility > 0.1(rating)
+            }
+            else {
+                // else, an incredibly stable horse, it will never get an unexpected result
+            }
+            String announcement = getRandomString(potVolStatments);
+            if (ifAdmin) {
+                potentialAnnouncements.add(announcement + " (Volatility: " + volatility + ")");
+            }
+            else {
+                potentialAnnouncements.add(announcement);
+            }
 
         }
         if (ifHistory) {
-            // If abs(ratio) < 0.1, very average
-            // If racesLost = 0, undefeated, insanely good horse, his reputation at stake
-            // if ratio > 10.0, one of the best horses in the league
-            // if ratio > 3.0,
+            ArrayList<String> potHistoryStatements = new ArrayList<>();
             int racesWon = horse.getRacesWon();
             int racesLost = horse.getRacesLost();
-            float ratio = (racesWon / racesLost) - 1.0f;
+            float percentWon = racesWon / (float)(racesLost + racesWon);
+            // TODO ADD THE HISTORICAL STATEMENTS
+            if (racesLost == 0) {
+                // Literally undefeated
+            }
+            else if (percentWon > 0.6) {
+                // One of the best horses in the league, will win often!
+            }
+            else if (percentWon > 0.4) {
+                // Has a hefty chance of winning the race!
+            }
+            else if (percentWon > 0.3) {
+                // One of the more average horses, will win a lot but lose much more
+            }
+            else if (percentWon > 0.2) {
+                // A horse that would be elated if wins
+            }
+            else if (percentWon > 0.1) {
+                // One of the horses that loses more, would be a miracle if it wins
+            }
+            else if (percentWon > 0.0) {
+                // Has a bad rap, can never seem to win
+            }
+            else {
+                // Never won before
+            }
+            String announcement = getRandomString(potHistoryStatements);
+            if (ifAdmin) {
+                potentialAnnouncements.add(announcement + " (won: " + (percentWon * 100) + "%)");
+            }
+            else {
+                potentialAnnouncements.add(announcement);
+            }
         }
         if (ifRatingDiff) {
+            ArrayList<String> potRatingDiffStatements = new ArrayList<>();
             float trainerSkill = horse.getTrainer().getSkill();
+            float ratingRatio = rating / trainerSkill;
+            // TODO ADD THE TRAINER SKILL COMPARISON STATEMENTS
+            if (ratingRatio > 5.0) {
+                // if ratingRatio > 5.0, The trainer can barely contain the horse! The horse could ride by itself
+            }
+            else if (ratingRatio > 2.0) {
+                // elif ratingRatio > 2.0, The trainer has a horse much better than him, he can learn a lot from its skill
+            }
+            else if (ratingRatio > 1.5) {
+                // elif ratingRatio > 1.5, The trainer has secured a great horse! Looks like he is more comfortable with other horses though
+            }
+            else if (ratingRatio > 1.1) {
+                // efli ratingRatio > 1.1, The horse's trainer looks confident in his strong horse
+            }
+            else if (ratingRatio > 0.9) {
+                // elif ratingRatio > 0.9, The horse and trainer seem really in sync! They are perfect for each other
+            }
+            else if (ratingRatio > 0.66) {
+                // elif ratingRatio > 0.66, The horse has secured an excellent trainer! It will get a lot better quickly!
+            }
+            else if (ratingRatio > 0.5) {
+                // elif ratingRatio > 0.5, The trainer is much better than the horse, what is he doing with it?
+            }
+            else {
+                // else, That trainer's horse looks so tired compared to the vibrance of his owner!
+            }
+            String announcement = getRandomString(potRatingDiffStatements);
+            if (ifAdmin) {
+                potentialAnnouncements.add(announcement + " (ratio: " + ratingRatio + ")");
+            }
+            else {
+                potentialAnnouncements.add(announcement);
+            }
         }
         if (ifRaceValue) {
+            ArrayList<String> potRaceValueStatements = new ArrayList<>();
             float raceValue = horse.getRaceValue();
+            float addedRatingPercent = (raceValue - rating) / rating;
+            // How much percent was added to the raceValue
+            // TODO ADD THE RACEVALUE COMPARISON STATEMENTS
+            if (addedRatingPercent > 3.0) {
+                // if addedRatingPercent > 3.0, this horse is pulling one of the craziest out-of-the-blue come backs I've ever seen
+            }
+            else if (addedRatingPercent > 2.0) {
+                // if addedRatingPercent > 2.0, Wow! This horse is doing brilliantly well!
+            }
+            else if (addedRatingPercent > 1.0) {
+                // if addedRatingPercent > 1.0, This horse is going off today! He is doing twice what he normally would!
+            }
+            else if (addedRatingPercent > 0.5) {
+                // if addedRatingPercent > 0.5, This horse is doing much better than usual!
+            }
+            else if (addedRatingPercent > 0.1) {
+                // if addedRatingPercent > 0.1, This horse is having a good day!
+            }
+            else if (addedRatingPercent > -0.1) {
+                // if addedRatingPercent > -0.1, This horse is looking strong and solid
+            }
+            else if (addedRatingPercent > -0.5) {
+                // if addedRatingPercent > -0.5, This horse is looking tired today
+            }
+            else if (addedRatingPercent > -1.0) {
+                // if addedRatingPercent > -1.0, This horse is lagging behind more than usual
+            }
+            else if (addedRatingPercent > -2.0) {
+                // if addedRatingPercent > -2.0, This horse is looks nearly dead today!
+            }
+            else if (addedRatingPercent > -3.0) {
+                // if addedRatingPercent > -3.0, Oh no! The horse is performing much worse than usual, almost stumbling into other lanes...
+            }
+            else {
+                // else, The horse looks completely destroyed! He is in no shape to be out right now!
+            }
+
+            String announcement = getRandomString(potRaceValueStatements);
+            if (ifAdmin) {
+                potentialAnnouncements.add(announcement + " (raceValue added: " + (addedRatingPercent * 100) + "%)");
+            }
+            else {
+                potentialAnnouncements.add(announcement);
+            }
+            potentialAnnouncements.add(getRandomString(potRaceValueStatements));
         }
 
         String announcement = getRandomString(potentialAnnouncements);
@@ -399,9 +556,6 @@ public class Race {
 
     public void announceTheRace() {
         // racers should be sorted at this point
-        // TODO add some randomness to this
-        // TODO include the stats about volatility, trainer skill, rating, name, league
-        // TODO Also use input to make it more interactive
 
         // Different values of note:
 
@@ -456,52 +610,61 @@ public class Race {
                 case 1:
                     // 1, horse stats
                     // TODO Add lane numbers? (i.e in lane number one we have rider...)
-                    ArrayList<String> startingStatements = new ArrayList<>();
-                    startingStatements.add("The horses look poised and ready to go!");
-                    startingStatements.add("It looks like every trainer is on their horse and we are ready to begin.");
-
+                    // ArrayList<String> startingStatements = new ArrayList<>();
+                    raceAnnouncementChoice.add("The horses look poised and ready to go!");
+                    raceAnnouncementChoice.add("It looks like every trainer is on their horse and we are ready to begin.");
+                    raceAnnouncementChoice.add("It's been a long day leading up to this, but now each horse is at their lane and prepared.");
                     // Include ratings / volatility / difference between trainer and horse
                     ifVol = true;
                     ifRatingDiff = true;
                     break;
                 case 2:
                     // TODO beginning of the race
-                    // ArrayList<String> start
-
+                    raceAnnouncementChoice.add("And they're off!");
+                    raceAnnouncementChoice.add("And the horses are out of their gates!");
+                    raceAnnouncementChoice.add("Ready...Set...Go!");
+                    raceAnnouncementChoice.add("And there they go! The horses charge out of their gates!");
                     // Include "expected" results based on ratings
                     ifLeague = true;
                     break;
                 case 3:
                     // TODO mid places
-                    // TODO Speak more about what the horses and trainers have at stake (their x1.0 value)
-
+                    raceAnnouncementChoice.add("They each start to speed up!");
+                    // Speak more about what the horses and trainers have at stake (their x1.0 value)
+                    ifRatingDiff = true;
                     break;
                 case 4:
                     // TODO full speed
+                    raceAnnouncementChoice.add("They are now fully racing! Look at them go!");
                     // Include volatility in how crazy each horse looks
                     ifVol = true;
                     break;
                 case 5:
                     // TODO the turn
+                    raceAnnouncementChoice.add("Now they are approaching the turn! They are going back and forth who's in front!");
                     // Include difference between raceValue and rating to say if good day or bad day
                     ifRaceValue = true;
                     break;
                 case 6:
                     // TODO random historical commentary
+                    raceAnnouncementChoice.add("Each horse has an interesting back story!");
                     // Include racesWon/racesLost
                     ifHistory = true;
                     break;
                 case 7:
                     // TODO the twist near the end
                     // TODO Only incorporate ratings in how surprised the announcer is
+                    // TODO randomRacers are used here
                     break;
                 case 8:
                     // TODO the twist at the very end
                     // TODO Only incorporate ratings in how surprised the announcer is
+                    // TODO racers are used here
                     break;
                 case 9:
                     // TODO the finishing positions
                     // TODO Only incorporate ratings in how surprised the announcer is
+                    //
                     break;
                 default:
                     // ERROR?

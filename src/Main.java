@@ -20,13 +20,13 @@
 //         System.out.println(as.get(0));
 
           // Stop it before it goes any further
-         try {
-             (new BufferedReader(new InputStreamReader(System.in))).readLine();
-         }
-         catch (IOException e) {
-             e.printStackTrace();
-             return;
-         }
+//         try {
+//             (new BufferedReader(new InputStreamReader(System.in))).readLine();
+//         }
+//         catch (IOException e) {
+//             e.printStackTrace();
+//             return;
+//         }
         Simulation simulation = new Simulation();
         simulation.enter();
     }

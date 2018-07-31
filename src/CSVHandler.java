@@ -8,13 +8,30 @@ public class CSVHandler {
     private static String trainerCSVFileName = "data/trainers.csv";
     private static String ownershipCSVFileName = "data/ownership.csv";
 
+    private static String userBackupCSVFileName = "data.backup/users.csv";
+    private static String horseBackupCSVFileName = "data.backup/horses.csv";
+    private static String trainerBackupCSVFileName = "data.backup/trainers.csv";
+    private static String ownershipBackupCSVFileName = "data.backup/ownership.csv";
+
     // return[0] is regular users, return[1] is computer users
     public static ArrayList<HashMap<String, User>> getUsers() {
         HashMap<String, User> users = new HashMap<>();
         HashMap<String, User> computerUsers = new HashMap<>();
 
+        String filename;
+        if ((new File(userCSVFileName)).isFile()) {
+            filename = userCSVFileName;
+        }
+        else if ((new File(userBackupCSVFileName)).isFile()) {
+            filename = userBackupCSVFileName;
+        }
+        else {
+            filename = "";
+            System.err.println("Could not find User CSV Files!");
+        }
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(userCSVFileName));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             String line;
             br.readLine();
             while((line = br.readLine()) != null) {
@@ -42,10 +59,22 @@ public class CSVHandler {
     }
 
     public static HashMap<String, Horse> getHorses() {
-        // TODO
         HashMap<String, Horse> horses = new HashMap<>();
+
+        String filename;
+        if ((new File(horseCSVFileName)).isFile()) {
+            filename = horseCSVFileName;
+        }
+        else if ((new File(horseBackupCSVFileName)).isFile()) {
+            filename = horseBackupCSVFileName;
+        }
+        else {
+            filename = "";
+            System.err.println("Could not find Horse CSV Files!");
+        }
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(horseCSVFileName));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             String line;
             br.readLine();
             while((line = br.readLine()) != null) {
@@ -71,8 +100,21 @@ public class CSVHandler {
     public static HashMap<String, Trainer> getTrainers() {
         //TODO
         HashMap<String, Trainer> trainers = new HashMap<>();
+
+        String filename;
+        if ((new File(trainerCSVFileName)).isFile()) {
+            filename = trainerCSVFileName;
+        }
+        else if ((new File(trainerBackupCSVFileName)).isFile()) {
+            filename = trainerBackupCSVFileName;
+        }
+        else {
+            filename = "";
+            System.err.println("Could not find Trainer CSV Files!");
+        }
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(trainerCSVFileName));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             String line;
             br.readLine();
             while((line = br.readLine()) != null) {
@@ -92,8 +134,21 @@ public class CSVHandler {
     }
 
     public static void updateOwnership(HashMap<String, Horse> horseHashMap, HashMap<String, Trainer> trainerHashMap) {
+
+        String filename;
+        if ((new File(ownershipCSVFileName)).isFile()) {
+            filename = ownershipCSVFileName;
+        }
+        else if ((new File(ownershipBackupCSVFileName)).isFile()) {
+            filename = ownershipBackupCSVFileName;
+        }
+        else {
+            filename = "";
+            System.err.println("Could not find Ownership CSV Files!");
+        }
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(ownershipCSVFileName));
+            BufferedReader br = new BufferedReader(new FileReader(filename));
             String line;
             br.readLine();
             while((line = br.readLine()) != null) {
