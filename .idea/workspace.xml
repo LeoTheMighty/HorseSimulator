@@ -3,18 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="abe8a746-ce11-4216-a117-56b6dfb657a0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.backup/ownership.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.backup/ownership.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.backup/trainers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.backup/trainers.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.backup/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.backup/users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/horses.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/horses.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ownership.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ownership.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/trainers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/trainers.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HorseSimulator/CSVHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HorseSimulator/CSVHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HorseSimulator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HorseSimulator/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HorseSimulator/Race.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HorseSimulator/Race.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HorseSimulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HorseSimulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.backup/horses.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.backup/ownership.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.backup/trainers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.backup/users.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/horses.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ownership.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/trainers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/users.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CSVHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CSVHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Race.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +27,7 @@
       <file leaf-file-name="Race.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Race.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
+            <state relative-caret-position="1734">
               <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,8 +48,8 @@
       <file leaf-file-name="CSVHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CSVHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="184" column="36" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
+            <state relative-caret-position="221">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,6 +92,7 @@
         <option value="$PROJECT_DIR$/data.backup/users.csv" />
         <option value="$PROJECT_DIR$/data.backup/trainers.csv" />
         <option value="$PROJECT_DIR$/data.backup/ownership.csv" />
+        <option value="$PROJECT_DIR$/HorseSimulator.iml" />
         <option value="$PROJECT_DIR$/src/CSVHandler.java" />
       </list>
     </option>
@@ -108,9 +107,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-18" />
-    <option name="y" value="-30" />
-    <option name="width" value="1890" />
+    <option name="x" value="252" />
+    <option name="y" value="18" />
+    <option name="width" value="963" />
     <option name="height" value="930" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -119,19 +118,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="HorseSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="HorseSimulator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HorseSimulator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HorseSimulator" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -144,11 +138,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15136719" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="com.maddyhome.idea.vim.ui.VimEmulationConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\leoni\IdeaProjects\HorseSimulator\data.backup" />
+      <recent name="C:\Users\leoni\IdeaProjects\HorseSimulator\data" />
+      <recent name="C:\Users\leoni\IdeaProjects\HorseSimulator\help" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\leoni\IdeaProjects\HorseSimulator\data" />
       <recent name="C:\Users\leoni\IdeaProjects\HorseSimulator\data.backup" />
@@ -248,12 +247,16 @@
       <workItem from="1531838640564" duration="4505000" />
       <workItem from="1531996850177" duration="370000" />
       <workItem from="1532030826768" duration="417000" />
-      <workItem from="1533034998786" duration="909000" />
+      <workItem from="1533034998786" duration="1170000" />
+      <workItem from="1533046413007" duration="681000" />
+      <workItem from="1533056217030" duration="50000" />
+      <workItem from="1533056289254" duration="1195000" />
+      <workItem from="1533057497891" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49253000" />
+    <option name="totallyTimeSpent" value="52464000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -266,32 +269,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3298969" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3298969" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003903" side_tool="true" weight="0.524055" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.5003903" side_tool="true" visible="true" weight="0.4879725" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960968" weight="0.28006873" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960968" visible="true" weight="0.28006873" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3298969" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15456675" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15456675" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.33161512" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3298969" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -331,9 +333,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -537,9 +536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HorseSimulator.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -582,9 +578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -595,9 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -625,49 +615,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/users.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.backup/users.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.backup/trainers.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/trainers.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.backup/ownership.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.backup/horses.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/horses.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/ownership.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data/users.csv" />
+    <entry file="file://$PROJECT_DIR$/data.backup/users.csv" />
+    <entry file="file://$PROJECT_DIR$/data.backup/trainers.csv" />
+    <entry file="file://$PROJECT_DIR$/data/trainers.csv" />
+    <entry file="file://$PROJECT_DIR$/data.backup/ownership.csv" />
+    <entry file="file://$PROJECT_DIR$/data.backup/horses.csv" />
+    <entry file="file://$PROJECT_DIR$/data/horses.csv" />
+    <entry file="file://$PROJECT_DIR$/data/ownership.csv" />
     <entry file="file://$PROJECT_DIR$/src/Race.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
+        <state relative-caret-position="1734">
           <caret line="102" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -675,10 +633,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HorseSimulator.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/CSVHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="184" column="36" selection-start-line="184" selection-start-column="36" selection-end-line="184" selection-end-column="36" />
+        <state relative-caret-position="221">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -737,7 +702,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>data</last-edited>
+          <last-edited>HorseSimulator</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

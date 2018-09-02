@@ -3,15 +3,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CSVHandler {
-    private static String userCSVFileName = "data/users.csv";
-    private static String horseCSVFileName = "data/horses.csv";
-    private static String trainerCSVFileName = "data/trainers.csv";
-    private static String ownershipCSVFileName = "data/ownership.csv";
+    final private static String dataModule = "data";
+    final private static String backupDataModule = "backupdata";
 
-    private static String userBackupCSVFileName = "data.backup/users.csv";
-    private static String horseBackupCSVFileName = "data.backup/horses.csv";
-    private static String trainerBackupCSVFileName = "data.backup/trainers.csv";
-    private static String ownershipBackupCSVFileName = "data.backup/ownership.csv";
+    final private static String userCSVFileName = dataModule + "/users.csv";
+    final private static String horseCSVFileName = dataModule + "/horses.csv";
+    final private static String trainerCSVFileName = dataModule + "/trainers.csv";
+    final private static String ownershipCSVFileName = dataModule + "/ownership.csv";
+
+    final private static String userBackupCSVFileName = backupDataModule + "/users.csv";
+    final private static String horseBackupCSVFileName = backupDataModule + "/horses.csv";
+    final private static String trainerBackupCSVFileName = backupDataModule + "/trainers.csv";
+    final private static String ownershipBackupCSVFileName = backupDataModule + "/ownership.csv";
 
     // return[0] is regular users, return[1] is computer users
     public static ArrayList<HashMap<String, User>> getUsers() {
